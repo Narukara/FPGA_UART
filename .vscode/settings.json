@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "*.qpf": true,
+        "*.qws": true,
+        "*.rpt": true,
+        "db": true,
+        "incremental_db": true,
+        "output_files": true,
+        "simulation": true
+    }
+}

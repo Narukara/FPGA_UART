@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "quartus_sh",
+            "type": "shell",
+            "args": [
+                "--flow",
+                "compile",
+                "${workspaceFolderBasename}"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "add",
+            "type": "shell",
+            "command": "quartus_sh",
+            "args": [
+                "-t",
+                "addon.tcl"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "quartus_pgm",
+            "args": [
+                "-c",
+                "USB-Blaster",
+                "-m",
+                "jtag",
+                "-o",
+                "'p;output_files/${workspaceFolderBasename}.sof'"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "sim",
+            "type": "shell",
+            "command": "make",
+            "problemMatcher": []
+        }
+    ]
+}
