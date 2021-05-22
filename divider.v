@@ -1,10 +1,24 @@
 `timescale 1ps/1ps
 // clock signal divider
 module divider (input CLK_50M,
-                output reg CLK_500k, // T = 2us
-                output reg CLK_1k,   // T = 1ms
-                output reg CLK_100,  // T = 10ms
-                output reg CLK_1);   // T = 1s
+                output reg CLK_2500k, // 
+                output reg CLK_500k,  // T = 2us
+                output reg CLK_1k,    // T = 1ms
+                output reg CLK_100,   // T = 10ms
+                output reg CLK_1);    // T = 1s
+    
+    // 50MHz to 2.5MHz
+    parameter max = 4'd9; // (50M / 2.5M / 2 - 1)
+    reg [3:0] count;
+    always @(negedge CLK_50M) begin
+        if (count == max) begin
+            count     <= 4'b0;
+            CLK_2500k <= ~CLK_2500k;
+        end
+        else begin
+            count <= count + 1'b1;
+        end
+    end
     
     // 50MHz to 500kHz
     parameter max0 = 6'd49; // (50M / 500k / 2 - 1)

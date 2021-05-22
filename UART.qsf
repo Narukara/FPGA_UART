@@ -70,13 +70,14 @@ set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb -section_id tb
 set_global_assignment -name EDA_TEST_BENCH_FILE tb.v -section_id tb
 set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 
 set_global_assignment -name VERILOG_FILE test.v
 set_global_assignment -name VERILOG_FILE divider.v
 set_global_assignment -name VERILOG_FILE filter.v
-set_global_assignment -name VERILOG_FILE sender.v
 set_global_assignment -name VERILOG_FILE shift_reg.v
+set_global_assignment -name VERILOG_FILE sender.v
+set_global_assignment -name VERILOG_FILE receiver.v
+set_global_assignment -name VERILOG_FILE number_display.v
 
 set_location_assignment PIN_E1 -to CLK
 set_location_assignment PIN_E10 -to led[0]
@@ -90,3 +91,37 @@ set_location_assignment PIN_N13 -to button[0]
 
 set_location_assignment PIN_M2 -to RX
 set_location_assignment PIN_N1 -to TX
+
+set_location_assignment PIN_R14 -to seg[6]
+set_location_assignment PIN_N16 -to seg[5]
+set_location_assignment PIN_P16 -to seg[4]
+set_location_assignment PIN_T15 -to seg[3]
+set_location_assignment PIN_P15 -to seg[2]
+set_location_assignment PIN_N12 -to seg[1]
+set_location_assignment PIN_N15 -to seg[0]
+
+set_location_assignment PIN_N9 -to sel[0]
+set_location_assignment PIN_P9 -to sel[1]
+set_location_assignment PIN_M10 -to sel[2]
+set_location_assignment PIN_N11 -to sel[3]
+set_location_assignment PIN_P11 -to sel[4]
+set_location_assignment PIN_M11 -to sel[5]
+
+set_location_assignment PIN_R10 -to DO[1]
+set_location_assignment PIN_R11 -to DO[2]
+set_location_assignment PIN_R12 -to DO[3]
+set_location_assignment PIN_R13 -to DO[4]
+
+set_location_assignment PIN_M9 -to out_led[0]
+set_location_assignment PIN_L10 -to out_led[1]
+set_location_assignment PIN_P2 -to out_led[2]
+set_location_assignment PIN_P1 -to out_led[3]
+set_location_assignment PIN_T3 -to out_led[4]
+set_location_assignment PIN_L9 -to out_led[5]
+set_location_assignment PIN_K9 -to out_led[6]
+set_location_assignment PIN_N2 -to out_led[7]
+set_location_assignment PIN_P3 -to out_led[8]
+set_location_assignment PIN_T2 -to out_led[9]
+set_location_assignment PIN_P8 -to out_led[10]
+set_location_assignment PIN_R1 -to out_led[11]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
