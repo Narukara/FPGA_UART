@@ -78,6 +78,7 @@ set_global_assignment -name VERILOG_FILE shift_reg.v
 set_global_assignment -name VERILOG_FILE sender.v
 set_global_assignment -name VERILOG_FILE receiver.v
 set_global_assignment -name VERILOG_FILE number_display.v
+set_global_assignment -name VERILOG_FILE motor.v
 
 set_location_assignment PIN_E1 -to CLK
 set_location_assignment PIN_E10 -to led[0]
