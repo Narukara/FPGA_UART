@@ -53,12 +53,12 @@ module receiver (input CLK,                 // f = 5 x baud rate
         end
     end
     
-    `ifdef ODD
+`ifdef ODD
     assign OK = (~Q) & (~sample[1]) & sample[11] & (^sample[10:2]);
-    `elsif EVEN
+`elsif EVEN
     assign OK = (~Q) & (~sample[1]) & sample[11] & (~^sample[10:2]);
-    `else
+`else
     assign OK = (~Q) & (~sample[1]) & sample[10];
-    `endif
+`endif
     
 endmodule

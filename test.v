@@ -13,8 +13,8 @@ module test (input CLK,
              output [5:0] sel,
              output [4:1] DO);
     
-    wire CLK_2500k, CLK_500k, CLK_1k, CLK_100, CLK_1;
-    divider div (CLK, CLK_2500k, CLK_500k, CLK_1k, CLK_100, CLK_1);
+    wire CLK_RX, CLK_TX, CLK_1k, CLK_100, CLK_1;
+    divider div (CLK, CLK_RX, CLK_TX, CLK_1k, CLK_100, CLK_1);
     assign led[0] = CLK_1;
     
     wire [3:0] signal;
@@ -33,11 +33,11 @@ module test (input CLK,
             message <= message - 1'b1;
         end
     end
-    sender send (CLK_500k, signal[2], message, TX);
+    sender send (CLK_TX, signal[2], message, TX);
     
     wire [11:1] sample;
     wire OK, catch;
-    receiver rec (CLK_2500k, RX, OK, catch, sample);
+    receiver rec (CLK_RX, RX, OK, catch, sample);
     assign led[1] = OK;
     
     number_display nd (CLK_1k, {sample[9:2], 8'h11, message}, seg, sel);
@@ -47,7 +47,7 @@ module test (input CLK,
     wire stop;
     motor_driver md (sample[9:2], OK, speed, dir, stop);
     motor m(CLK_1k, speed, dir, stop, DO);
-
+    
     // assign DO[1] = RX;
     // assign DO[2] = TX;
     // assign DO[3] = catch;
