@@ -1,3 +1,4 @@
+`timescale 1ps/1ps
 module motor (input CLK,           // 1kHz
               input [2:0] speed,   // 1 <= speed <= 7
               input dir,
