@@ -23,7 +23,7 @@ module receiver (input CLK,                 // f = 5 x baud rate
     
     reg [6:1] count;
     assign S = start;
-    assign R = ~(count == 6'd53);
+    assign R = ~(count >= 6'd53);
     
     assign catch = 
     (count == 6'd2) |

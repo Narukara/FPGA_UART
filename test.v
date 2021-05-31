@@ -24,21 +24,21 @@ module test (input CLK,
     f2 (CLK_100, button[2], signal[2]),
     f3 (CLK_100, button[3], signal[3]);
     
-    reg [8:1] message;
-    always @(negedge signal[0]) begin
-        if (signal[1] == 1'b1) begin
-            message <= message + 1'b1;
-        end
-        else begin
-            message <= message - 1'b1;
-        end
-    end
-    sender send (CLK_TX, signal[2], message, TX);
-    
     wire [11:1] sample;
     wire OK, catch;
     receiver rec (CLK_RX, RX, OK, catch, sample);
     assign led[1] = OK;
+    
+    wire [8:1] message = sample[9:2];
+    // always @(negedge signal[0]) begin
+    //     if (signal[1] == 1'b1) begin
+    //         message <= message + 1'b1;
+    //     end
+    //     else begin
+    //         message <= message - 1'b1;
+    //     end
+    // end
+    sender send (CLK_TX, ~OK, message, TX);
     
     number_display nd (CLK_1k, {sample[9:2], 8'h11, message}, seg, sel);
     
