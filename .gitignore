@@ -4,3 +4,4 @@ output_files
 simulation
 wave.vcd
 UART.qws
+*.rpt
